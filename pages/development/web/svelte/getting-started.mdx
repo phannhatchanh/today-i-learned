@@ -1,0 +1,75 @@
+# Svelte - Getting Started
+
+```bash
+npx degit sveltejs/template <project_name>
+cd <project_name>
+
+npm i
+npm run dev
+```
+
+reference: [svelte.dev](https://svelte.dev/blog/the-easiest-way-to-get-started#2_Use_degit)
+
+### sveltekit (beta)
+
+```bash
+mkdir <app_name>
+cd <app_name>
+npm init svelte@next
+
+# install dependencies
+npm install
+
+# start dev server and open a browser tab
+npm run dev -- --open
+```
+
+reference: [https://kit.svelte.dev/](https://kit.svelte.dev/)
+
+### @vitejs/app
+
+<Nextra.Tabs items={['npm', 'yarn']}>
+  <Nextra.Tab>
+    ```bash
+    npm init @vitejs/app [app_name] --template svelte
+    ```
+  </Nextra.Tab>
+  <Nextra.Tab>
+    ```bash
+    yarn create @vitejs/app [app_name] --template svelte
+    ```
+  </Nextra.Tab>
+</Nextra.Tabs>
+
+TypeScript
+
+<Nextra.Tabs items={['npm', 'yarn']}>
+  <Nextra.Tab>
+    ```bash
+    npm init @vitejs/app [app_name] --template svelte-ts
+    ```
+  </Nextra.Tab>
+  <Nextra.Tab>
+    ```bash
+    yarn create @vitejs/app [app_name] --template svelte-ts
+    ```
+  </Nextra.Tab>
+</Nextra.Tabs>
+
+references:
+
+- [vitejs.dev](https://vitejs.dev/guide/#scaffolding-your-first-vite-project)
+- [https://github.com/vitejs/vite/tree/main/packages/create-app](https://github.com/vitejs/vite/tree/main/packages/create-app)
+
+### `create-snowpack-app`
+
+```bash
+npx create-snowpack-app <app_name> --template @snowpack/app-template-svelte-typescript [--use-yarn | --use-pnpm | --no-install]
+npx create-snowpack-app <app_name> --template @snowpack/app-template-svelte
+```
+
+references:
+
+- [https://github.com/snowpackjs/snowpack/tree/main/create-snowpack-app/cli](https://github.com/snowpackjs/snowpack/tree/main/create-snowpack-app/cli)
+- [https://www.snowpack.dev/tutorials/svelte](https://www.snowpack.dev/tutorials/svelte)
+- [https://www.snowpack.dev/](https://www.snowpack.dev/)

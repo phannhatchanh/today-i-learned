@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito%3A400%2C400i%2C700%2C700i&subset=vietnamese&ver=6.0.2');
+
+@font-face {
+  font-family: 'Cal Sans';
+  src: url('https://cal.com/cal.ttf');
+}
+
+@font-face {
+  font-family: 'Virgil';
+  src: url('/fonts/Virgil.woff2') format('woff2');
+}
+
+h1 {
+  font-family: 'Virgil';
+  font-weight: normal;
+  letter-spacing: normal;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Cal Sans';
+  font-weight: normal;
+  letter-spacing: normal;
+}
+
+html {
+  font-family: 'Nunito' !important;
+}

@@ -1,0 +1,6 @@
+{
+  "index": { "title": "Home", "type": "page", "hidden": true },
+  "bookmarks": { "title": "Bookmarks", "type": "page" },
+  "development": { "title": "Dev", "type": "page" },
+  "misc": { "title": "misc", "type": "page" }
+}

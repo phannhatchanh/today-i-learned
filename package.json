@@ -1,0 +1,41 @@
+{
+  "name": "til",
+  "version": "1.2.0",
+  "description": "chanh's personal knowledge base",
+  "author": "phan nhat chanh",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "start": "next start",
+    "build": "next build",
+    "format": "prettier --write pages",
+    "release": "standard-version",
+    "push-release": "git push --follow-tags origin main",
+    "pre-commit": "lint-staged",
+    "prepare": "husky install"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "next": "^12.2.4",
+    "nextra": "2.0.0-beta.13",
+    "nextra-theme-docs": "2.0.0-beta.13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "critters": "^0.0.16",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "standard-version": "^9.5.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "pages/**/*.{js,jsx,ts,tsx,md,css}": [
+      "prettier --write"
+    ]
+  }
+}
