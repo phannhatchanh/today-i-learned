@@ -1,12 +1,14 @@
+/** @type {import('nextra-theme-docs').DocsThemeConfig} */
 export default {
-  projectLink: 'https://github.com/phannhatchanh',
+  project: { link: 'https://github.com/phannhatchanh' },
   docsRepositoryBase: 'https://github.com/phannhatchanh/til',
   branch: 'main',
-  nextLinks: true,
-  prevLinks: true,
+  navigation: {
+    next: true,
+    prev: true,
+  },
   unstable_flexsearch: true,
-  floatTOC: true,
-  search: true,
+  float: true,
   darkMode: true,
   titleSuffix: ' | Today I Learned',
   logo: (
@@ -32,7 +34,7 @@ export default {
         <meta name="twitter:url" content="https://til.phannhatchanh.com" />
         <meta name="og:title" content="TIL: chanh's knowledge base" />
         <meta name="og:image" content={ogImgLink} />
-        <meta name="apple-mobile-web-app-title" content="Base" />
+        <meta name="apple-mobile-web-app-title" content="T.I.L" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -69,23 +71,27 @@ export default {
       </>
     )
   },
-  footer: true,
-  footerEditLink: () => 'Edit this page →',
-  footerText: () => (
-    <>
-      2019 - {new Date().getFullYear()} |{' '}
-      <a href="https://phannhatchanh.com">Phan Nhat Chanh</a>
-      .<br />
-      Feel free to let me know if there are some content which are outdated /
-      need to be updated{' '}
-      <a href="mailto:phannhatchanh@gmail.com?subject=til.phannhatchanh.com&body=which-page-url-and-give-some-details-of-your-request-or-question">
-        here
-      </a>
-      .
-    </>
-  ),
+  editLink: () => 'Edit this page →',
+  footer: {
+    text: (
+      <>
+        2019 - {new Date().getFullYear()} |{' '}
+        <a href="https://phannhatchanh.com" 
+          style={{
+            textDecoration: 'underline',
+          }}>Phan Nhat Chanh</a>.<br />
+        Feel free to let me know if there are some content which are outdated /
+        need to be updated{' '}
+        <a href="mailto:phannhatchanh@gmail.com?subject=til.phannhatchanh.com&body=which-page-url-and-give-some-details-of-your-request-or-question" 
+        style={{
+          textDecoration: 'underline',
+        }}>
+          here</a>.
+      </>
+    ),
+  },
   // i18n: [
   //   { locale: 'en', text: 'English' },
-  //   { locale: 'vi', text: 'Việt Nam' },
+  //   { locale: 'id', text: 'Bahasa Indonesia' },
   // ],
 }
