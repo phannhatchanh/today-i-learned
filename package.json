@@ -16,15 +16,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "next": "^12.3.0",
-    "nextra": "2.0.0-beta.26",
-    "nextra-theme-docs": "2.0.0-beta.26",
+    "next": "^12.3.3",
+    "nextra": "2.0.0-beta.41",
+    "nextra-theme-docs": "2.0.0-beta.41",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "critters": "^0.0.16",
-    "husky": "^8.0.1",
+    "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "standard-version": "^9.5.0"

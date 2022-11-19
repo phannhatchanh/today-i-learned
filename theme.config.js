@@ -1,3 +1,6 @@
+import { useRouter } from 'next/router'
+import { useConfig } from 'nextra-theme-docs'
+
 /** @type {import('nextra-theme-docs').DocsThemeConfig} */
 export default {
   project: { link: 'https://github.com/phannhatchanh' },
@@ -7,18 +10,35 @@ export default {
     next: true,
     prev: true,
   },
-  unstable_flexsearch: true,
-  float: true,
+  toc: {
+    float: true,
+  },
   darkMode: true,
-  titleSuffix: ' | Today I Learned',
+  editLink: {
+    text: 'Edit this page on GitHub',
+  },
   logo: (
     <>
-      <span className="mr-2 font-extrabold md:inline">TIL</span>
+      <span className="nx-mr-2 nx-font-extrabold md:nx-inline">TIL</span>
       <span className="text-gray-600 font-normal md:inline">phannhatchanh.com</span>
     </>
   ),
-  head: ({ title, meta }) => {
-    const ogImgLink=`https://res.cloudinary.com/phannhatchanh/image/upload/w_1600,h_836,q_100/l_text:Comfortaa_72_bold:${title ?? 'Today I Learned'},co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Nunito_48:${title ? "Chanh's knowledge base" : 'Personal Knowledge Base'},co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_text:Nunito_30:https%253A%252F%252Ftil.phannhatchanh.com,co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_40/l_twitter_name:tv0656m006/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_240,g_north_west,x_700,y_100/website/grain-gradient.png`
+  getNextSeoProps: function SEO() {
+    const { frontMatter } = useConfig()
+
+    const defaultTitle = frontMatter.overrideTitle || ' | Today I Learned';
+
+    return {
+      description: frontMatter.description,
+      defaultTitle,
+      titleTemplate: `%s | Today I Learned`,
+    }
+  },
+  head: () => {
+    const router = useRouter()
+    const { title } = useConfig()
+
+    const ogImgLink=encodeURI(`https://res.cloudinary.com/phannhatchanh/image/upload/w_1600,h_836,q_100/l_text:Comfortaa_72_bold:${title ?? 'Today I Learned'},co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Nunito_48:${title ? "Chanh's knowledge base" : 'Personal Knowledge Base'},co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_text:Nunito_30:https%253A%252F%252Ftil.phannhatchanh.com,co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_40/l_twitter_name:tv0656m006/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_240,g_north_west,x_700,y_100/website/grain-gradient.png`)
 
     return (
       <>
@@ -32,8 +52,12 @@ export default {
         <meta name="twitter:image" content={ogImgLink} />
         <meta name="twitter:site:domain" content="til.phannhatchanh.com" />
         <meta name="twitter:url" content="https://til.phannhatchanh.com" />
-        <meta name="og:title" content="TIL: chanh's knowledge base" />
+        <meta
+          name="og:title"
+          content={title ?? "TIL: chanh's knowledge base"}
+        />
         <meta name="og:image" content={ogImgLink} />
+        <meta name="og:url" content={`https://til.phannhatchanh.com${router.asPath}`} />
         <meta name="apple-mobile-web-app-title" content="T.I.L" />
         <link
           rel="apple-touch-icon"
@@ -74,7 +98,7 @@ export default {
   editLink: () => 'Edit this page →',
   footer: {
     text: (
-      <>
+      <div>
         2019 - {new Date().getFullYear()} |{' '}
         <a href="https://phannhatchanh.com" 
           style={{
@@ -82,12 +106,12 @@ export default {
           }}>Phan Nhat Chanh</a>.<br />
         Feel free to let me know if there are some content which are outdated /
         need to be updated{' '}
-        <a href="mailto:phannhatchanh@gmail.com?subject=til.phannhatchanh.com&body=which-page-url-and-give-some-details-of-your-request-or-question" 
-        style={{
-          textDecoration: 'underline',
-        }}>
+        <a 
+          href="mailto:phannhatchanh@gmail.com?subject=til.phannhatchanh.com&body=which-page-url-and-give-some-details-of-your-request-or-question" 
+          className="nx-underline nx-underline-offset-4"
+        >
           here</a>.
-      </>
+      </div>
     ),
   },
   // i18n: [
