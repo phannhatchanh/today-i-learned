@@ -19,7 +19,7 @@ export default {
   },
   logo: (
     <>
-      <span className="nx-mr-2 nx-font-extrabold md:nx-inline">TIL</span>
+      <span className="nx-mr-2 nx-font-extrabold md:nx-inline">T.I.L</span>
       <span className="text-gray-600 font-normal md:inline">phannhatchanh.com</span>
     </>
   ),
