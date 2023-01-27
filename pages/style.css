@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito%3A400%2C400i%2C700%2C700i&subset=vietnamese&ver=6.0.2');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 @font-face {
   font-family: 'Cal Sans';
@@ -27,5 +27,5 @@ h6 {
 }
 
 html {
-  font-family: 'Nunito' !important;
+  font-family: 'Outfit' !important;
 }

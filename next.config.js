@@ -1,16 +1,14 @@
 const withNextra = require('nextra')({
   theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.js',
-  unstable_flexsearch: true,
-  unstable_staticImage: true,
+  themeConfig: './theme.config.tsx',
 })
 
 /** @type {import('next').NextConfig} */
 module.exports = withNextra({
   // i18n: {
-  //   locales: ['en', 'vi'],
+  //   locales: ['en', 'vn'],
   //   defaultLocale: 'en'
-  // },
+  // }
   experimental: {
     optimizeCss: true,
   },
