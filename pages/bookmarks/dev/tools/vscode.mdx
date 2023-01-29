@@ -1,4 +1,17 @@
-# VSCode Extensions
+## .vscode
+
+Tạo một file có tên `typescript-react.code-snippets` trong thư mục `.vscode` để thêm snippet cho CLSX package
+```json
+// add clsx snippet
+{
+  "Element with clsx": {
+    "prefix": "cl",
+    "body": ["<${1:div} className={clsx('$2')}>$0</${1:div}>"]
+  }
+}
+```
+
+## VSCode Extensions
 
 | Plugins                                                                                                               | Description                                                                        |
 | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
