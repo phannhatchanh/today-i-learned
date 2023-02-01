@@ -128,12 +128,12 @@ const config: DocsThemeConfig = {
       <div>
         2020 - {new Date().getFullYear()} |{' '}
         <a
-          href="https://sznm.dev"
+          href="https://phannhatchanh.com"
           target="_blank"
           rel="noopener noreferrer"
           className="nx-underline nx-underline-offset-4 nx-font-bold"
         >
-          Phan Nhật Chánh
+          phannhatchanh.com
         </a>
         <p className="nx-text-sm nx-text-gray-500">
           Feel free to let me know if there are some content which are outdated
