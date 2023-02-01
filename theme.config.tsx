@@ -129,8 +129,6 @@ const config: DocsThemeConfig = {
         2020 - {new Date().getFullYear()} |{' '}
         <a
           href="https://phannhatchanh.com"
-          target="_blank"
-          rel="noopener noreferrer"
           className="nx-underline nx-underline-offset-4 nx-font-bold"
         >
           phannhatchanh.com
