@@ -5,17 +5,18 @@
   src: url('https://cal.com/cal.ttf');
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Virgil';
   src: url('/fonts/Virgil.woff2') format('woff2');
-}
+} */
 
-h1 {
+/* h1 {
   font-family: 'Virgil';
   font-weight: normal;
   letter-spacing: normal;
-}
+} */
 
+h1,
 h2,
 h3,
 h4,
