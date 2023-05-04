@@ -1,8 +1,4 @@
-node_modules
 .next
-.DS_Store
-yarn-error.log
-dist
-/draft
-
 .env.local
+
+node_modules
