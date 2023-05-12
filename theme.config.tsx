@@ -88,7 +88,7 @@ const config: DocsThemeConfig = {
     )
   },
   darkMode: true,
-  primaryHue: { light: 0, dark: 156 },
+  primaryHue: { light: 290, dark: 50 },
   chat: {
     link: 'https://twitter.com/tv0656m006',
     icon: (
