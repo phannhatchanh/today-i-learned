@@ -58,3 +58,72 @@ function copyCodeListener() {
 
 export default copyCodeListener
 ```
+
+```tsx {4, 24-33} filename="blog/[slug].tsx"
+import { useEffect, useRef } from 'react'
+import { useMDXComponent } from 'next-contentlayer/hooks'
+import { getTweets } from 'lib/twitter'
+import addCopyCodeButtons from 'lib/addCopyCodeButtons'
+import components from 'components/MDXComponents'
+import BlogLayout from 'layouts/blog'
+import Tweet from 'components/Tweet'
+import { allBlogs } from 'contentlayer/generated'
+import { getPartialPost } from 'lib/contentlayer'
+
+export default function Post({
+  post,
+  tweets,
+}: {
+  post: ReturnType<typeof getPartialPost>
+  tweets: any[]
+}) {
+  const Component = useMDXComponent(post.body.code)
+  const StaticTweet = ({ id }) => {
+    const tweet = tweets.find((tweet) => tweet.id === id)
+    return <Tweet {...tweet} />
+  }
+
+  // https://phannhatchanh.com/snippets/javascript/them-nut-copy-vao-code-blocks-bang-javascript/
+  const effectRan = useRef(false)
+  useEffect(() => {
+    if (effectRan.current === true || process.env.NODE_ENV !== 'development') {
+      addCopyCodeButtons()
+    }
+    return () => {
+      effectRan.current = true
+    }
+  }, [])
+
+  return (
+    <BlogLayout post={post}>
+      <Component
+        components={
+          {
+            ...components,
+            StaticTweet,
+          } as any
+        }
+      />
+    </BlogLayout>
+  )
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: allBlogs.map((p) => ({ params: { slug: p.slug } })),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const post = allBlogs.find((post) => post.slug === params.slug)
+  const tweets = await getTweets(post.tweetIds)
+
+  return {
+    props: {
+      post: getPartialPost(post, allBlogs),
+      tweets,
+    },
+  }
+}
+```
