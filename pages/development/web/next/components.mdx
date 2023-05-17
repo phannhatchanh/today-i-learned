@@ -1,0 +1,60 @@
+# Components
+
+## Copy to Clipboard
+
+Thêm nút lệnh copy vào `code block`
+
+### Version (old)
+
+```tsx filename="components/copyToClipboard.tsx"
+const copyToClipboard = (str: string) => {
+  const el = document.createElement('textarea')
+  el.value = str
+  el.setAttribute('readonly', '')
+  el.style.position = 'absolute'
+  el.style.left = '-9999px'
+  document.body.appendChild(el)
+  const selected =
+    document.getSelection().rangeCount > 0
+      ? document.getSelection().getRangeAt(0)
+      : false
+  el.select()
+  document.execCommand('copy')
+  document.body.removeChild(el)
+  if (selected) {
+    document.getSelection().removeAllRanges()
+    document.getSelection().addRange(selected)
+  }
+}
+
+export default copyToClipboard
+```
+
+```tsx filename="lib/addCopyCodeButtons.ts"
+import toast from 'react-hot-toast'
+import copyToClipboard from 'components/copyToClipboard'
+
+function handleCopyClick(evt) {
+  const { children } = evt.target.parentElement
+  const { innerText } = Array.from(children)[0] as HTMLElement
+
+  copyToClipboard(innerText)
+  toast.success('Đã copy vào clipboard!') // Thông báo khi nhấn vào nút copy
+}
+
+function copyCodeListener() {
+  const codeBlocks = document.querySelectorAll('pre[data-language]') // Thêm vào thẻ <pre>
+
+  codeBlocks.forEach((codeBlock) => {
+    const copy = document.createElement('div')
+    copy.classList.add('copy-code-button')
+    copy.innerHTML = 'Copy'
+
+    copy.addEventListener('click', handleCopyClick)
+
+    codeBlock.append(copy)
+  })
+}
+
+export default copyCodeListener
+```
