@@ -119,10 +119,6 @@ const config: DocsThemeConfig = {
     toggleButton: true,
   },
   navigation: true,
-  // toc: {
-  //   float: true,
-  //   extraContent: true,
-  // },
   logo: (
     <>
       <span className="nx-mr-2 nx-font-extrabold md:nx-inline">T.I.L</span>
