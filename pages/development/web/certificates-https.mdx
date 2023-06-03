@@ -1,0 +1,47 @@
+# certificates https
+
+## Sử dụng SSL trong nextjs
+
+### Sử dụng mkcert
+
+- Cài đặt [mkcert](https://mkcert.dev).
+- Mở terminal chạy lệnh `mkcert` để thamm khảo các bước.
+- Chạy lệnh `mkcert localhost` trong thư mục gốc của dự án để tạo 2 file `localhost.pem` và `localhost-key.pem`
+- Tạo một tệp `server.js` trong thư mục gốc của dự án như sau:
+    ```js filename="server.js"
+    const { createServer } = require("https");
+    const { parse } = require("url");
+    const next = require("next");
+    const fs = require("fs");
+    const port = 3000;
+    const dev = process.env.NODE_ENV !== "production";
+    const app = next({ dev });
+    const handle = app.getRequestHandler();
+
+    const httpsOptions = {
+        key: fs.readFileSync("./localhost-key.pem"),
+        cert: fs.readFileSync("./localhost.pem")
+    };
+
+    app.prepare().then(() => {
+        createServer(httpsOptions, (req, res) => {
+            const parsedUrl = parse(req.url, true);
+            handle(req, res, parsedUrl);
+        }).listen(port, (err) => {
+            if (err) throw err;
+            console.log("ready - started server on url: https://localhost:" + port);
+        });
+    });
+    ```
+- Cuối cùng chạy lệnh `node server.js` hoặc mở **package.json** và thêm lệnh `node server.js`
+    ```json filename="package.json" /node server.js/
+    ...
+    "scripts": {
+        "dev": "node server.js && next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "prisma:migrate": "npx prisma migrate dev --schema=./src/prisma/schema.prisma"
+    },
+    ...
+    ```
