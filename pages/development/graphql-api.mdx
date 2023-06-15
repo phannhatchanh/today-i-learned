@@ -1,0 +1,69 @@
+import { Tab, Tabs } from 'nextra-theme-docs'
+
+# GraphQL API
+
+## GitHub GraphQL API
+
+Lấy tất cả các `note` của một project(classic) trên github sử dụng công cụ [GitHub GraphQL API](https://docs.github.com/en/graphql/overview/explorer)
+
+<Tabs items={['Cách 1', 'Cách 2']}>
+  <Tab>
+  Lấy `columnId` của một project
+	```graphql filename="Bước 1"
+	query { 
+		repository(name: "phannhatchanh.com", owner: "phannhatchanh") {
+			project(number: 1) {
+				name
+				columns(first: 1) {
+					nodes {
+						id
+						name
+					}
+				}
+			}
+		}
+	}
+	```
+		```graphql filename="Bước 2"
+		query ($columnId: ID!) {
+			node(id: $columnId) {
+				... on ProjectColumn {
+					cards {
+						nodes {
+							note
+						}
+					}
+				}
+			}
+		}
+	```
+	Trong phần **QUERY VARIABLES**
+	```
+	{
+		"columnId": "id ở bước 1"
+	}
+	```
+  </Tab>
+  <Tab>
+    Lấy tất cả các `note` của một `columns` trong project
+	```graphql
+	query { 
+		repository(name: "phannhatchanh.com", owner: "phannhatchanh") {
+			project(number: 1) {
+				name
+				columns(first: 1) {
+					nodes {
+						name
+						cards {
+							nodes {
+								note
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	```
+  </Tab>
+</Tabs>
