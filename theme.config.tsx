@@ -126,6 +126,9 @@ const config: DocsThemeConfig = {
     </>
   ),
   editLink: { text: 'Edit this page →' },
+  toc: {
+    backToTop: true
+  },
   footer: {
     text: (
       <div>
