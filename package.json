@@ -5,20 +5,14 @@
   "author": "phan nhat chanh",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "dev": "next",
     "start": "next start",
     "build": "next build",
+    "build-only": "next build",
     "format": "prettier --write pages",
     "release": "standard-version",
     "push-release": "git push --follow-tags origin main",
-    "up-interactive": "pnpm up -i",
-    "up-latest": "pnpm up-interactive -L",
-    "up-next": "pnpm up-interactive --next",
-    "up-alpha": "pnpm up-interactive --alpha",
-    "up-beta": "pnpm up-interactive --beta",
-    "pre-commit": "lint-staged",
-    "prepare": "husky install"
+    "pre-commit": "lint-staged"
   },
   "license": "MIT",
   "dependencies": {
@@ -30,7 +24,6 @@
   },
   "devDependencies": {
     "critters": "^0.0.20",
-    "husky": "^9.0.10",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "standard-version": "^9.5.0"
