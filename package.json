@@ -1,6 +1,6 @@
 {
   "name": "today-i-learned",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "chanh's personal knowledge base",
   "author": "phan nhat chanh",
   "main": "index.js",
