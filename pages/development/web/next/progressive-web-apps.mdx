@@ -1,4 +1,4 @@
-import { Tabs, Tab } from 'nextra-theme-docs'
+import { Tabs } from 'nextra/components'
 
 # Progressive Web Apps (PWA)
 
@@ -11,7 +11,7 @@ npm i next-pwa
 2. Cấu hình
 
 <Tabs items={['next.config.js', 'next.config.mjs']}>
-  <Tab>
+  <Tabs.Tab>
     ```js
     /** @type {import('next').NextConfig} */
 
@@ -27,8 +27,8 @@ npm i next-pwa
 
     module.exports = withPWA(nextConfig);
     ```
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
     ```js
     /** @type {import('next').NextConfig} */
 
@@ -46,7 +46,7 @@ npm i next-pwa
 
     export default withPWA(nextConfig);
     ```
-  </Tab>
+  </Tabs.Tab>
 </Tabs>
 
 3. Chạy `next build`, thao tác này sẽ tạo hai tệp **workbox-*.js** và **sw.js** trong thư mục `public`.
@@ -54,6 +54,3 @@ npm i next-pwa
 4. Kiểm tra **Service workers** ở tab **Application** của **Dev Tool**
 
 5. Tham khảo thêm tại: https://github.com/shadowwalker/next-pwa
-
-
-

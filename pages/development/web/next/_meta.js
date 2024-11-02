@@ -1,7 +1,7 @@
-{
+export default {
     "getting-started": "Getting Started",
     "components": "Components",
     "prisma": "Prisma",
-    "pwa": "Progressive Web Apps"
+    "progressive-web-apps": "Progressive Web Apps"
 }
   

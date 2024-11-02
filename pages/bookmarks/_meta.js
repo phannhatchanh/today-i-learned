@@ -1,4 +1,4 @@
-{
+export default {
   "index": "Index",
   "productivity": "Productivity",
   "dev": "Software Development",

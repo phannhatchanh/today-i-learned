@@ -16,34 +16,33 @@ const config: DocsThemeConfig = {
   },
   
   docsRepositoryBase: 'https://github.com/phannhatchanh/til',
-  useNextSeoProps: () => {
-    const { frontMatter } = useConfig()
 
-    const defaultTitle =
-      frontMatter.overrideTitle || "| Today I Learned"
-
-    return {
-      description: frontMatter.description,
-      defaultTitle,
-      titleTemplate: `%s | Today I Learned`,
-    }
-  },
-  head: () => {
+  head: function useHead() {
     const { asPath, defaultLocale, locale } = useRouter()
-    const { frontMatter } = useConfig()
+    const config = useConfig()
+    const { route } = useRouter()
+    
     const url =
     'https://til.phannhatchanh.com' +
     (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
     
-    const ogImgLink=encodeURI(`https://res.cloudinary.com/phannhatchanh/image/upload/w_1600,h_836,q_100/l_text:Comfortaa_72_bold:${frontMatter.title ?? 'Today I Learned'},co_rgb:ffe4e6,c_fit,w_1400,h_240/fl_layer_apply,g_south_west,x_100,y_180/l_text:Nunito_48:${frontMatter.title ? "Chanh's knowledge base" : 'Personal Knowledge Base'},co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_100/l_text:Nunito_30:${url},co_rgb:ffe4e680,c_fit,w_1400/fl_layer_apply,g_south_west,x_100,y_40/l_twitter_name:tv0656m006/c_thumb,g_face,r_max,w_380,h_380,q_100/fl_layer_apply,w_240,g_north_west,x_700,y_100/website/grain-gradient.png`)
+    const isDefault = route === '/' || !config.title
+    const ogImgLink =
+      'https://nextra.site/' +
+      (isDefault ? 'og.jpeg' : `/og?title=${config.title}`)
+    const description =
+    config.frontMatter.description ||
+    'Today I Learned: chanh\'s knowledge base'
+    const title = config.title + (route === '/' ? '' : ' - Today I Learned')
 
     return (
       <>
+        <title>{title}</title>
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="Content-Language" content="vi" />
-        <meta name="description" content={frontMatter.description || "TIL: chanh's knowledge base"} />
+        <meta name="description" content={description || "TIL: chanh's knowledge base"} />
 
         {/* Twitter Meta */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -55,16 +54,16 @@ const config: DocsThemeConfig = {
         {/* OpenGraph Meta */}
         <meta
           name="og:title"
-          content={frontMatter.title || "TIL: chanh's knowledge base"}
+          content={title || "TIL: chanh's knowledge base"}
         />
         <meta name="og:url" content={url} />
         <meta name="og:type" content="website" />
         <meta property="og:locale" content="vi_IE" />
-        <meta property="og:site_name" content={frontMatter.title ||"Today I Learned | Chánh"} />
-        <meta name="og:description" content={frontMatter.description || "TIL: chanh's knowledge base"} />
+        <meta property="og:site_name" content={title || "Today I Learned | Chánh"} />
+        <meta name="og:description" content={description || "TIL: chanh's knowledge base"} />
         <meta name="og:image" content={ogImgLink} />
 
-        <meta name="apple-mobile-web-app-title" content={frontMatter.title || "TIL: chanh's knowledge base"} />
+        <meta name="apple-mobile-web-app-title" content={title || "TIL: chanh's knowledge base"} />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -102,7 +101,13 @@ const config: DocsThemeConfig = {
     )
   },
   darkMode: true,
-  primaryHue: { light: 290, dark: 50 },
+  color: {
+    hue: {
+      dark: 50,
+      light: 290
+    },
+    saturation: 100
+  },
   chat: {
     link: 'https://twitter.com/phannhatchanh',
     icon: (
@@ -116,19 +121,13 @@ const config: DocsThemeConfig = {
   },
   banner: {
     key: 'how-to-create-page-like-this',
-    text: (
+    content: (
       <a href="https://til.phannhatchanh.com/misc/recreate-page-like-this">
         🎉 How to create page like this?. Check it out →
       </a>
     ),
   },
   sidebar: {
-    titleComponent({ title, type }) {
-      if (type === 'separator') {
-        return <span className="cursor-default">{title}</span>
-      }
-      return <>{title}</>
-    },
     defaultMenuCollapseLevel: 1,
     toggleButton: true,
   },
@@ -140,12 +139,12 @@ const config: DocsThemeConfig = {
       <span className="text-gray-600 font-normal md:inline">phannhatchanh.com</span>
     </>
   ),
-  editLink: { text: 'Edit this page →' },
+  editLink: { content: 'Edit this page →' },
   toc: {
     backToTop: true
   },
   footer: {
-    text: (
+    content: (
       <div>
         2019 - {new Date().getFullYear()} |{' '}
         <a
@@ -169,8 +168,8 @@ const config: DocsThemeConfig = {
     ),
   },
   // i18n: [
-  //   { locale: 'en', text: 'English' },
-  //   { locale: 'vn', text: 'Vietnamese' },
+  //   { locale: 'en', name: 'English' },
+  //   { locale: 'vn', name: 'Vietnamese' },
   // ],
 }
 

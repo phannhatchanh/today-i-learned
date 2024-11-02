@@ -1,4 +1,4 @@
-{
+export default {
   "index": "Index",
   "windows-terminal": "Windows Terminal",
   "graphql-api": "GraphQL API",

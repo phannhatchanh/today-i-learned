@@ -1,4 +1,4 @@
-import { Tabs, Tab } from 'nextra-theme-docs'
+import { Tabs } from 'nextra/components'
 
 # Svelte - Getting Started
 
@@ -31,31 +31,31 @@ reference: [https://kit.svelte.dev/](https://kit.svelte.dev/)
 ### @vitejs/app
 
 <Tabs items={['npm', 'yarn']}>
-  <Tab>
+  <Tabs.Tab>
     ```bash
     npm init @vitejs/app [app_name] --template svelte
     ```
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
     ```bash
     yarn create @vitejs/app [app_name] --template svelte
     ```
-  </Tab>
+  </Tabs.Tab>
 </Tabs>
 
 TypeScript
 
 <Tabs items={['npm', 'yarn']}>
-  <Tab>
+  <Tabs.Tab>
     ```bash
     npm init @vitejs/app [app_name] --template svelte-ts
     ```
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
     ```bash
     yarn create @vitejs/app [app_name] --template svelte-ts
     ```
-  </Tab>
+  </Tabs.Tab>
 </Tabs>
 
 references:

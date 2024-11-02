@@ -1,4 +1,4 @@
-{
+export default {
   "index": { "title": "Home", "type": "page" },
   "bookmarks": { "title": "Bookmarks", "type": "page" },
   "development": { "title": "Dev", "type": "page" },

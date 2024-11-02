@@ -1,4 +1,4 @@
-import { Tab, Tabs } from 'nextra-theme-docs'
+import { Tabs } from 'nextra/components'
 
 # Components
 
@@ -133,7 +133,7 @@ export async function getStaticProps({ params }) {
 ## Back To Top
 
 <Tabs items={['Style 1', 'Style 2']}>
-  <Tab>
+  <Tabs.Tab>
     ```tsx filename="components/BackToTop.tsx"
     import { useState, useEffect, FC } from 'react'
     import { ChevronDoubleUpIcon } from '@heroicons/react/24/outline'
@@ -173,8 +173,8 @@ export async function getStaticProps({ params }) {
 
     export default BackToTop
     ```
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
     ```tsx filename="components/BackToTop.tsx"
     'use client'
 
@@ -219,5 +219,5 @@ export async function getStaticProps({ params }) {
       )
     }
     ```
-  </Tab>
+  </Tabs.Tab>
 </Tabs>
