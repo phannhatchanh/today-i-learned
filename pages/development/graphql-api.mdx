@@ -6,7 +6,7 @@ import { Tabs } from 'nextra/components'
 
 Lấy tất cả các `note` của một project(classic) trên github sử dụng công cụ [GitHub GraphQL API](https://docs.github.com/en/graphql/overview/explorer)
 
-<Tabs items={['Cách 1', 'Cách 2', 'NextJs Page']}>
+<Tabs items={['Cách 1', 'Cách 2', 'Github ProjectV2', 'NextJs Page']}>
   <Tabs.Tab>
   Lấy `columnId` của một project
 	```graphql filename="Bước 1"
@@ -57,6 +57,27 @@ Lấy tất cả các `note` của một project(classic) trên github sử dụ
 						cards {
 							nodes {
 								note
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	```
+  </Tabs.Tab>
+	<Tabs.Tab>
+	```graphql
+	query {
+		user(login: "phannhatchanh") {
+			projectV2(number: 15) {
+				items(first: 10) {
+					nodes {
+						fieldValues(first: 10) {
+							nodes {
+								... on ProjectV2ItemFieldTextValue {
+									text
+								}
 							}
 						}
 					}
