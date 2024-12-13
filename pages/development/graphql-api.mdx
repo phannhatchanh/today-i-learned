@@ -67,7 +67,7 @@ Lấy tất cả các `note` của một project(classic) trên github sử dụ
 	```
   </Tabs.Tab>
 	<Tabs.Tab>
-	```graphql
+	```graphql filename="GraphQL GitHub ProjectV2"
 	query {
 		user(login: "phannhatchanh") {
 			projectV2(number: 15) {
@@ -84,6 +84,104 @@ Lấy tất cả các `note` của một project(classic) trên github sử dụ
 				}
 			}
 		}
+	}
+	```
+	```tsx filename="https://phannhatchanh.com/tweets"
+	import { Suspense } from "react";
+	import { EmbeddedTweet, TweetSkeleton } from "react-tweet";
+	import { getTweet } from "react-tweet/api";
+	import PageHeader from "@/components/page-header";
+	import { getPageSeo } from "@/lib/contentful";
+	import { cn } from "@/lib/utils";
+	import styles from "./tweet.module.css";
+
+	export async function generateMetadata() {
+		const seoData = await getPageSeo("tweets");
+		if (!seoData) return null;
+
+		const { seo: { title, description, keywords } } = seoData;
+		const siteUrl = "/tweets";
+
+		return {
+			title,
+			description,
+			keywords,
+			openGraph: {
+				title,
+				description,
+				url: siteUrl,
+			},
+			alternates: {
+				canonical: siteUrl,
+			},
+		};
+	}
+
+	export default async function Tweets() {
+		const { tweets } = await fetchData();
+
+		return (
+			<section>
+				<PageHeader
+					caption={"/tweets"}
+					title={"Inspired Tweets"}
+					description={"A collection of tweets that inspire me, make me laugh, and make me ponder."}
+				/>
+				<div className="columns-1 gap-4 sm:columns-2">
+					{tweets.tweets.map((tweet, index) => (
+						<div
+							key={index}
+							className={cn("thumbnail-shadow mb-4 relative w-full min-w-full overflow-hidden rounded-xl", styles.tweetCard)}
+							data-theme="light"
+						>
+							<Suspense fallback={<TweetSkeleton />}>
+								<EmbeddedTweet tweet={tweet} />
+							</Suspense>
+						</div>
+					))}
+				</div>
+			</section>
+		);
+	}
+
+	async function fetchData() {
+		const response = await fetch("https://api.github.com/graphql", {
+			method: "POST",
+			headers: {
+				Authorization: `Bearer ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`,
+			},
+			body: JSON.stringify({
+				query: `query {
+					user(login: "phannhatchanh") {
+						projectV2(number: 15) {
+							items(first: 10) {
+								nodes {
+									fieldValues(first: 10) {
+										nodes {
+											... on ProjectV2ItemFieldTextValue {
+												text
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}`,
+			}),
+		}).then((res) => res.json());
+
+		const tweetIds = response?.data?.user?.projectV2?.items?.nodes?.flatMap((node) =>
+			node.fieldValues.nodes.map((field) => field.text)
+		);
+
+		// Get the actual tweets from Twitter using the Twitter API
+		const tweets =
+			tweetIds && tweetIds.length > 0
+				? await Promise.all(tweetIds.map((id) => getTweet(id)))
+				: [];
+
+		return { tweets: { tweets } };
 	}
 	```
   </Tabs.Tab>
