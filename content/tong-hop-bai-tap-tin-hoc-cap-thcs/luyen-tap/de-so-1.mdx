@@ -1,0 +1,54 @@
+### Bài 1. (5,0đ)
+Cho bài toán sau:
+
+> Vừa gà vừa chó;  
+> Bó lại cho tròn;  
+> Có m con và n chân.  
+> Hỏi có mấy gà, mấy chó?
+
+Viết chương trình nhập hai số nguyên dương $m, n (m, n < 10^5)$. Tìm số con gà và số con chó tìm được (nếu không tìm được in ra $KHONG$).
+
+**Ví dụ:**  
+Với $m = 36, n = 100$ thì in ra kết quả: $Ga = 22; Cho = 14$
+
+---
+
+### Bài 2. (6,0đ)
+Viết chương trình nhập số nguyên dương $n (n < 10^4)$ từ bàn phím. In ra màn hình:
+
+- Số $P$ là tổng các chữ số của $n$.
+- Tổng $S$ được tính theo công thức:
+  $
+  S = \frac{1}{2} - \frac{1}{3} + \frac{1}{4} - \frac{1}{5} + \dots - \frac{(-1)^n}{n+1}
+  $
+  (kết quả lấy 4 chữ số thập phân).
+- Tìm $k$ lớn nhất sao cho $1.2 + 2.3 + 3.4 + \dots + k(k + 1) \leq n^2$.
+
+**Ví dụ:**  
+Với $n = 16$, in ra kết quả: $P = 7; S = 0.2783; k = 8$
+
+### Bài 3. (5,0đ)
+Viết chương trình nhập một xâu kí tự $S$ chỉ gồm các chữ cái in thường và chữ số. In ra màn hình:
+
+- Số tự nhiên $a$ sau khi xóa các chữ cái trong $S$.
+- Xóa một số chữ số của $a$ để được số tự nhiên $b$ lớn nhất chia hết cho 5 (nếu không tìm được in ra $KHONG$).
+- Số $T$ là tổng các số có trong xâu $S$.
+
+**Ví dụ:**  
+Với $S = hsg8ngay21thang4nam2023$, thì in ra kết quả: $a = 82142023; b = 821420; T = 2056$
+
+---
+
+### Bài 4. (4,0đ)
+Mã số của một số nguyên dương được xác định như sau: tính tổng các chữ số của số đó, sau đó tính lại tổng các chữ số của số mới tạo được cho đến khi chỉ còn một chữ số duy nhất. 
+
+(Ví dụ: $59 → 5 + 9 = 14 → 1 + 4 = 5$, mã số của $59$ là $5$).
+
+Viết chương trình nhập $n$ số nguyên dương có $k$ chữ số ($k < 10^9$). In ra màn hình mã số của các số vừa nhập và các số có cùng mã số với số lượng nhiều nhất (nếu nhiều mã số có số lượng bằng nhau thì chọn mã số có giá trị nhỏ nhất).
+
+**Ví dụ:**  
+Với $n = 5$ và các số nhập là: $23\,7\,59\,26\,50$ thì in ra kết quả:
+
+$
+Ma so: 5\,7\,5\,8\,5\,\,\,Cac so cung ma nhieu nhat: 23; 59; 50
+$
