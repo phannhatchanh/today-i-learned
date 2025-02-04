@@ -93,7 +93,7 @@ export default async function RootLayout({ children }) {
           light: 'rgb(255, 250, 245)',
         }}
         color={{
-          hue: { dark: 55, light: 220 },
+          hue: { dark: 50, light: 220 },
           saturation: { dark: 100, light: 100 },
         }}
       >
