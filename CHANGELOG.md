@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.2](https://github.com/phannhatchanh/today-i-learned/compare/v3.0.1...v3.0.2) (2025-02-07)
+
+
+### Bug Fixes
+
+* adjust color hue in layout and update package dependencies ([62ae537](https://github.com/phannhatchanh/today-i-learned/commit/62ae5375519447579580c6191062694cbb15828b))
+
 ### [3.0.1](https://github.com/phannhatchanh/today-i-learned/compare/v3.0.0...v3.0.1) (2024-11-02)
 
 ## [3.0.0](https://github.com/phannhatchanh/today-i-learned/compare/v2.0.0...v3.0.0) (2024-11-02)
