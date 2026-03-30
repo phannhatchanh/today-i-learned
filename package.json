@@ -15,21 +15,21 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lucide-react": "^0.501.0",
-    "next": "15.5.9",
-    "nextra": "^4.6.0",
-    "nextra-theme-docs": "^4.6.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "lucide-react": "^1.7.0",
+    "next": "^16.2.1",
+    "nextra": "^4.6.1",
+    "nextra-theme-docs": "^4.6.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
-    "@types/node": "^22.19.0",
-    "@types/react": "^19.2.2",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.2",
     "critters": "^0.0.25",
-    "lint-staged": "15.5.1",
+    "lint-staged": "^16.4.0",
     "pagefind": "^1.4.0",
-    "prettier": "^3.6.2",
+    "prettier": "^3.8.1",
     "standard-version": "^9.5.0"
   },
   "prettier": {
